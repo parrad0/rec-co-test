@@ -1,0 +1,8 @@
+getWeatherData:
+  handler: src/index.getWeatherData
+  role: GetWeatherRole
+  events:
+    - http:
+        path: get-weather
+        method: get
+        private: false

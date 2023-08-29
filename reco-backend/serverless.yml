@@ -1,0 +1,21 @@
+service: recobackend
+frameworkVersion: "3"
+
+plugins:
+  - serverless-plugin-typescript
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  stage: ${opt:stage, 'dev' }
+  region: ${opt:region, 'eu-west-1' }
+  environment:
+    REGION: ${self:provider.region}
+
+functions:
+  - ${file(serverless/functions/get-data.yml)}
+
+resources:
+  - Resources:
+      ConfigTable: ${file(serverless/db/data-table.yml)}
+      GetWeatherRole: ${file(serverless/iam/get-weather-role.yml)}
