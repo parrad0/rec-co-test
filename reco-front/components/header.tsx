@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Download } from "lucide-react";
 
 function Header() {
   return (
